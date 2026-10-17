@@ -1,0 +1,18 @@
+CÓMO PUBLICAR EN GITHUB PAGES (vicynic.com)
+
+1. github.com → New repository → nombre: vicynic → Public → Create.
+2. "uploading an existing file" → arrastrá TODO el contenido de esta carpeta
+   (index.html, support.js, CNAME y la carpeta assets) → Commit changes.
+3. Settings → Pages → Source: "Deploy from a branch" → Branch: main / (root) → Save.
+4. Settings → Pages → Custom domain: vicynic.com → Save. Cuando se habilite, tildá "Enforce HTTPS".
+
+DNS EN DONWEB (zona DNS de vicynic.com):
+  Tipo A   @    185.199.108.153
+  Tipo A   @    185.199.109.153
+  Tipo A   @    185.199.110.153
+  Tipo A   @    185.199.111.153
+  CNAME    www  TU-USUARIO.github.io.
+Borrá otros registros A de "@" que existan. Puede tardar unas horas.
+
+PARA ACTUALIZAR TEXTOS DESPUÉS:
+  Solo reemplazá index.html en el repositorio (Add file → Upload files → Commit).
