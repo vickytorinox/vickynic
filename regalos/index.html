@@ -36,8 +36,14 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
   </header>
 
   <sc-if value="{{ isStore }}" hint-placeholder-val="{{ true }}">
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px">
-      <div data-gift="sabanas" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+    <div role="group" aria-label="Ordenar" style="display:flex;align-items:center;gap:6px;margin-top:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:8px 10px;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06)">
+      <span style="flex:none;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#45563a;padding-right:2px">ordenar</span>
+      <sc-for list="{{ sorts }}" as="so" hint-placeholder-count="4">
+        <button type="button" aria-pressed="{{ so.sel }}" onClick="{{ so.pick }}" style="flex:none;min-height:38px;padding:0 12px;border:1px solid #7a1f33;background:{{ so.bg }};color:{{ so.fg }};cursor:pointer;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease,color .2s ease">{{ so.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px">
+      <div data-gift="sabanas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.sabanas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/sabanas.png" alt="Juego de sábanas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -57,7 +63,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="toallas" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="toallas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.toallas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/toallas.png" alt="Set de toallas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -77,7 +83,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="copas" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="copas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.copas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/copas.png" alt="Copas de vino" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -97,7 +103,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="vajilla" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="vajilla" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.vajilla.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/vajilla.png" alt="Vajilla" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -117,7 +123,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="ollas" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="ollas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.ollas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/ollas.png" alt="Set de ollas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -137,7 +143,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="cafetera" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="cafetera" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.cafetera.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/cafetera.png" alt="Cafetera" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -157,7 +163,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="lampara" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="lampara" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.lampara.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/lampara.png" alt="Lámpara de pie" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -177,7 +183,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="alfombra" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="alfombra" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.alfombra.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/alfombra.png" alt="Alfombra" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -197,7 +203,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="manta" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="manta" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.manta.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/manta.png" alt="Manta tejida" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -217,7 +223,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="plantas" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="plantas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.plantas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/plantas.png" alt="Plantas y macetas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -237,7 +243,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="cuadro" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="cuadro" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.cuadro.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/cuadro.png" alt="Cuadro" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -257,7 +263,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
-      <div data-gift="batidora" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0">
+      <div data-gift="batidora" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.batidora.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
           <img src="fotos/batidora.png" alt="Batidora" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
         </div>
@@ -394,7 +400,7 @@ const money = (n, c) => (c === "USD" ? "US$" : "$") + Math.round(n).toLocaleStri
 const fmt = n => "$" + Math.round(n).toLocaleString("es-AR");
 
 class Component extends DCLogic {
-  state = { view: "store", cart: {}, meta: {}, free: [], freeAmount: "", freeCur: "ARS", name: "", message: "", file: null, copied: null, error: "", sending: false };
+  state = { sort: "dest", ord: {}, view: "store", cart: {}, meta: {}, free: [], freeAmount: "", freeCur: "ARS", name: "", message: "", file: null, copied: null, error: "", sending: false };
   setQty(id, d, ev) {
     const el = ev && ev.currentTarget && ev.currentTarget.closest("[data-gift]");
     const def = ITEMS.find(i => i.id === id);
@@ -421,6 +427,14 @@ class Component extends DCLogic {
   removeLine(fn) {
     this.setState(st => { const nx = fn(st); const c = nx.cart || st.cart, fr = nx.free || st.free; if (!Object.keys(c).length && !fr.length && st.view === "checkout") { nx.view = "store"; } return nx; });
   }
+  setSort(mode) {
+    const els = Array.from(document.querySelectorAll("[data-gift]"));
+    const data = els.map((el, i) => ({ id: el.getAttribute("data-gift"), i, name: (el.querySelector('[data-role="name"]') || el).textContent.trim(), price: parseInt((el.querySelector('[data-role="price"]') || el).textContent.replace(/\D/g, ""), 10) || 0 }));
+    const base = ITEMS.map(x => x.id);
+    data.sort((a, b) => mode === "az" ? a.name.localeCompare(b.name, "es") : mode === "hi" ? b.price - a.price : mode === "lo" ? a.price - b.price : base.indexOf(a.id) - base.indexOf(b.id));
+    const ord = {}; data.forEach((d, k) => { ord[d.id] = k; });
+    this.setState({ sort: mode, ord });
+  }
   go(view) { this.setState({ view, error: "" }); window.scrollTo({ top: 0, behavior: "smooth" }); }
   renderVals() {
     const s = this.state;
@@ -434,7 +448,8 @@ class Component extends DCLogic {
     const freeN = parseInt(s.freeAmount, 10) || 0;
     return {
       isStore: s.view === "store", isCheckout: s.view === "checkout", isDone: s.view === "done",
-      g: Object.fromEntries(ITEMS.map(i => { const q = s.cart[i.id] || 0; return [i.id, { qty: q, inCart: q > 0, notInCart: q === 0, inc: e => this.setQty(i.id, 1, e), dec: e => this.setQty(i.id, -1, e) }]; })),
+      sorts: [["dest", "destacados"], ["az", "A–Z"], ["hi", "mayor precio"], ["lo", "menor precio"]].map(([k, label]) => ({ label, sel: s.sort === k ? "true" : "false", bg: s.sort === k ? "#7a1f33" : "#fbfaf6", fg: s.sort === k ? "#fbfaf5" : "#7a1f33", pick: () => this.setSort(k) })),
+      g: Object.fromEntries(ITEMS.map((i, ix) => { const q = s.cart[i.id] || 0; return [i.id, { ord: s.ord[i.id] ?? ix, qty: q, inCart: q > 0, notInCart: q === 0, inc: e => this.setQty(i.id, 1, e), dec: e => this.setQty(i.id, -1, e) }]; })),
       freeAmountFmt: freeN ? freeN.toLocaleString("es-AR") : "",
       onFreeAmount: e => this.setState({ freeAmount: e.target.value.replace(/\D/g, "").slice(0, 9) }),
       freeBtn: "sumar", freeSym: s.freeCur === "USD" ? "US$" : "$",
