@@ -2,7 +2,8 @@ CÓMO PUBLICAR EN GITHUB PAGES (vicynic.com)
 
 1. github.com → New repository → nombre: vicynic → Public → Create.
 2. "uploading an existing file" → arrastrá TODO el contenido de esta carpeta
-   (index.html, support.js, CNAME y la carpeta assets) → Commit changes.
+   (index.html, support.js, CNAME, la carpeta assets y la carpeta regalos) → Commit changes.
+   La lista de regalos queda en vicynic.com/regalos (mismo repositorio).
 3. Settings → Pages → Source: "Deploy from a branch" → Branch: main / (root) → Save.
 4. Settings → Pages → Custom domain: vicynic.com → Save. Cuando se habilite, tildá "Enforce HTTPS".
 
@@ -13,6 +14,12 @@ DNS EN DONWEB (zona DNS de vicynic.com):
   Tipo A   @    185.199.111.153
   CNAME    www  TU-USUARIO.github.io.
 Borrá otros registros A de "@" que existan. Puede tardar unas horas.
+
+BACKEND (Google Sheets):
+  Pegá backend/Codigo.gs actualizado en Apps Script → Guardar →
+  Implementar → Gestionar implementaciones → Editar → Nueva versión → Implementar.
+  Aceptá el permiso de Drive. Se crea la hoja "Regalos" y la carpeta
+  "Comprobantes regalos" en tu Drive con el primer regalo.
 
 PARA ACTUALIZAR TEXTOS DESPUÉS:
   Solo reemplazá index.html en el repositorio (Add file → Upload files → Commit).
