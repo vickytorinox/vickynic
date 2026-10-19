@@ -164,67 +164,82 @@ a:hover{color:#2c3127}
 
 
 <div onClick="{{ closeContact }}" style="position:fixed;inset:0;z-index:75;background:rgba(44,49,39,.42);opacity:{{ contactOp }};visibility:{{ contactVis }};transition:opacity .35s ease,visibility .35s ease"></div>
-<aside role="dialog" aria-label="Info útil" style="position:fixed;top:0;right:0;bottom:0;z-index:76;width:min(420px,90vw);background:#fbfaf6;box-shadow:-12px 0 32px rgba(44,49,39,.2);transform:translateX({{ contactX }});visibility:{{ contactVis }};transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility .45s;overflow-y:auto;-webkit-overflow-scrolling:touch">
-  <div style="position:relative;height:64px;background:url(assets/floral-abejas.webp) center 30%/cover no-repeat"><div style="position:absolute;top:10px;right:12px"><button type="button" aria-label="Cerrar" onClick="{{ closeContact }}" style="flex:none;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(69,86,58,.4);border-radius:50%;background:#fbfaf6;cursor:pointer;font:400 28px/1 'Cormorant Garamond',serif;color:#2c3127;padding:0">×</button></div></div>
-  <div style="padding:18px 18px 28px">
-    <div style="text-wrap:balance;font:700 clamp(16px,4.6vw,19px)/1.35 'Cormorant Garamond',serif;letter-spacing:clamp(.1em,.9vw,.3em);padding-left:clamp(.1em,.9vw,.3em);text-transform:uppercase;color:#2c3127">info útil</div>
-    <p style="margin:8px 0 0;font:500 17px/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">Todo lo que necesitan para organizar el viaje.</p>
-    <div style="display:flex;flex-direction:column;margin-top:18px">
-      <sc-for list="{{ contacts }}" as="p" hint-placeholder-count="3">
-        <div style="padding:12px 0;border-top:1px solid rgba(69,86,58,.25)">
-          <div style="font:700 13px/1.2 'Cormorant Garamond',serif;letter-spacing:.18em;text-transform:uppercase;color:#45563a">{{ p.role }}</div>
-          <sc-if value="{{ p.hasSub }}" hint-placeholder-val="{{ true }}"><div style="margin-top:4px;font:italic 500 16px/1.35 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">{{ p.sub }}</div></sc-if>
-          <div style="margin-top:4px;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px"><span style="font:600 22px/1.2 'Cormorant Garamond',serif;color:#2c3127">{{ p.name }}</span><span style="font:500 18px/1.2 'Cormorant Garamond',serif;color:#2c3127;font-variant-numeric:lining-nums">{{ p.phone }}</span></div>
-          <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:8px">
-            <a href="{{ p.wa }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;box-sizing:border-box;padding:0 clamp(14px,4vw,24px);border:1px solid #5c1322;border-radius:1px;background:#7a1f33;box-shadow:0 6px 14px rgba(70,25,35,.24);cursor:pointer;font:700 14px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#fbfaf5;white-space:normal;text-align:center;line-height:1.2;max-width:100%;text-decoration:none;transition:background .3s ease,color .3s ease;min-height:46px;padding:0 10px;font-size:13px;letter-spacing:.12em" style-hover="background:#5c1322;color:#fbfaf5">whatsapp</a>
-            <a href="{{ p.tel }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;box-sizing:border-box;padding:0 clamp(14px,4vw,24px);border:1.5px solid #7a1f33;border-radius:1px;background:#fbfaf6;cursor:pointer;font:700 14px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#7a1f33;white-space:normal;text-align:center;line-height:1.2;max-width:100%;text-decoration:none;transition:background .3s ease,color .3s ease;min-height:46px;padding:0 10px;font-size:13px;letter-spacing:.12em" style-hover="background:#7a1f33;color:#fbfaf5">llamar</a>
-          </div>
-        </div>
+<aside role="dialog" aria-label="Info útil" style="position:fixed;top:0;right:0;bottom:0;z-index:76;width:min(400px,92vw);background:#fbfaf6;box-shadow:-12px 0 32px rgba(44,49,39,.2);transform:translateX({{ contactX }});visibility:{{ contactVis }};transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility .45s;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain">
+  <div style="position:sticky;top:0;z-index:3;height:52px;background:url(assets/floral-abejas.webp) center 30%/cover no-repeat"><button type="button" aria-label="Cerrar" onClick="{{ closeContact }}" style="position:absolute;top:6px;right:8px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(69,86,58,.35);border-radius:50%;background:#fbfaf6;cursor:pointer;font:400 24px/1 'Cormorant Garamond',serif;color:#2c3127;padding:0">×</button></div>
+  <div style="position:sticky;top:52px;z-index:2;background:#fbfaf6;padding:16px 16px 0;border-bottom:1px solid rgba(69,86,58,.22)">
+    <div style="text-align:center;font:700 15px/1.2 'Cormorant Garamond',serif;letter-spacing:.3em;padding-left:.3em;text-transform:uppercase;color:#2c3127">info útil</div>
+    <div role="tablist" aria-label="Info útil" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px">
+      <sc-for list="{{ infoTabs }}" as="tb" hint-placeholder-count="4">
+        <button type="button" role="tab" aria-selected="{{ tb.sel }}" onClick="{{ tb.pick }}" style="min-height:44px;padding:0 2px;border:0;border-bottom:2px solid {{ tb.line }};margin-bottom:-1px;background:transparent;cursor:pointer;font:700 11.5px/1.1 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase;color:{{ tb.fg }};transition:color .2s ease,border-color .2s ease">{{ tb.label }}</button>
       </sc-for>
     </div>
-    <div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(69,86,58,.4);font:700 15px/1.2 'Cormorant Garamond',serif;letter-spacing:.22em;text-transform:uppercase;color:#2c3127">Hospedaje recomendado</div>
-    <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+  </div>
+  <div style="padding:22px 20px 36px">
+    <sc-if value="{{ tab_hotel }}" hint-placeholder-val="{{ true }}">
+    <div role="tabpanel">
+    <div style="display:flex;flex-direction:column;margin-top:-14px">
       <sc-for list="{{ hotels }}" as="ht" hint-placeholder-count="3">
-        <div style="border:1px solid rgba(69,86,58,.3);background:#fff;padding:14px">
-          <div style="display:flex;align-items:baseline;gap:8px"><span style="font:700 14px/1 'Cormorant Garamond',serif;color:#7a1f33">{{ ht.n }}</span><span style="font:700 18px/1.2 'Cormorant Garamond',serif;letter-spacing:.06em;text-transform:uppercase;color:#2c3127">{{ ht.name }}</span></div>
+        <div style="padding:14px 0;border-bottom:1px solid rgba(69,86,58,.14)">
+          <div style="display:flex;align-items:baseline;gap:8px"><span style="font:400 20px/1 'Parisienne',cursive;color:#7a1f33">{{ ht.n }}</span><span style="font:700 15px/1.25 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:#2c3127">{{ ht.name }}</span></div>
           <sc-if value="{{ ht.hasInfo }}" hint-placeholder-val="{{ true }}">
-            <p style="margin:8px 0 0;font:500 16px/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">Las reservas se solicitan <b>exclusivamente</b> por mail a <a href="{{ ht.mailto }}" style="color:#7a1f33;font-weight:700;text-decoration:underline;overflow-wrap:anywhere">{{ ht.email }}</a> indicando como asunto:</p>
-            <div style="margin-top:8px;display:flex;align-items:center;gap:8px;background:#f3efe6;padding:8px 10px">
-              <div style="flex:1;min-width:0;font:600 15px/1.3 'Cormorant Garamond',serif;color:#2c3127;overflow-wrap:anywhere">{{ ht.subject }}</div>
-              <button type="button" onClick="{{ ht.copy }}" style="flex:none;min-height:36px;padding:0 10px;border:1px solid #7a1f33;background:{{ ht.cbg }};color:{{ ht.cfg }};cursor:pointer;font:700 11px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase">{{ ht.copyLabel }}</button>
-            </div>
-            <p style="margin:8px 0 0;font:italic 500 15px/1.4 'Cormorant Garamond',serif;color:#45563a;text-wrap:pretty">Cuentan con descuento por reserva y late check out hasta las 12 h.</p>
+            <p style="margin:6px 0 0;font:500 15px/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">Reservas <b style="font-weight:700">solo por mail</b> a <a href="{{ ht.mailto }}" style="color:#7a1f33;font-weight:700;overflow-wrap:anywhere">{{ ht.email }}</a> con el asunto:</p>
+            <div style="margin-top:6px;padding:7px 10px;background:#f1ece2;font:600 13.5px/1.35 'Cormorant Garamond',serif;color:#2c3127;overflow-wrap:anywhere">{{ ht.subject }}</div>
+            <p style="margin:6px 0 0;font:italic 500 14px/1.35 'Cormorant Garamond',serif;color:#45563a;text-wrap:pretty">Descuento especial y late check out hasta las 12 h.</p>
           </sc-if>
-          <sc-if value="{{ ht.noInfo }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 0;font:italic 500 15px/1.4 'Cormorant Garamond',serif;color:#45563a">Próximamente más información.</p></sc-if>
-          <div style="display:grid;grid-template-columns:{{ ht.cols }};gap:8px;margin-top:12px">
-            <a href="{{ ht.map }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1.5px solid #7a1f33;background:#fbfaf6;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:#7a1f33;text-decoration:none" style-hover="background:#7a1f33;color:#fbfaf5">ver ubicación</a>
-            <sc-if value="{{ ht.hasInfo }}" hint-placeholder-val="{{ true }}"><a href="{{ ht.mailto }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #5c1322;background:#7a1f33;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:#fbfaf5;text-decoration:none" style-hover="background:#5c1322">reservar por mail</a></sc-if>
+          <sc-if value="{{ ht.noInfo }}" hint-placeholder-val="{{ false }}"><p style="margin:6px 0 0;font:italic 500 14px/1.35 'Cormorant Garamond',serif;color:#45563a">Próximamente más información.</p></sc-if>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+            <a href="{{ ht.map }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;box-sizing:border-box;border:1px solid rgba(122,31,51,.5);background:transparent;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#7a1f33;text-decoration:none;cursor:pointer;white-space:nowrap">ubicación</a>
+            <sc-if value="{{ ht.hasInfo }}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{ ht.copy }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;box-sizing:border-box;border:1px solid rgba(122,31,51,.5);background:transparent;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#7a1f33;text-decoration:none;cursor:pointer;white-space:nowrap;background:{{ ht.cbg }};color:{{ ht.cfg }}">{{ ht.copyLabel }}</button>
+              <a href="{{ ht.mailto }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;box-sizing:border-box;border:1px solid #7a1f33;background:#7a1f33;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;text-decoration:none;cursor:pointer;white-space:nowrap">reservar</a>
+            </sc-if>
           </div>
         </div>
       </sc-for>
     </div>
-    <div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(69,86,58,.4);font:700 15px/1.2 'Cormorant Garamond',serif;letter-spacing:.22em;text-transform:uppercase;color:#2c3127">Viaje Buenos Aires → Rosario</div>
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:12px">
-      <div style="background:#fff;border:1px solid rgba(69,86,58,.3);padding:12px;text-align:center"><div style="font:700 28px/1 'Cormorant Garamond',serif;color:#7a1f33">300 km</div><div style="margin-top:4px;font:600 13px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase;color:#45563a">distancia</div></div>
-      <div style="background:#fff;border:1px solid rgba(69,86,58,.3);padding:12px;text-align:center"><div style="font:700 28px/1 'Cormorant Garamond',serif;color:#7a1f33">3 h 15</div><div style="margin-top:4px;font:600 13px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase;color:#45563a">en auto</div></div>
     </div>
-    <p style="margin:10px 0 0;font:500 16px/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">Todo autopista: Panamericana y luego Autopista Buenos Aires–Rosario (RN 9). Tiene peajes, conviene llevar TelePASE o efectivo.</p>
-    <div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(69,86,58,.4);font:700 15px/1.2 'Cormorant Garamond',serif;letter-spacing:.22em;text-transform:uppercase;color:#2c3127">El clima ese día</div>
-    <div style="margin-top:12px;background:#fff;border:1px solid rgba(69,86,58,.3);padding:16px">
-      <div style="font:600 13px/1.2 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:#45563a">Sábado 12/12 · 19 h · Rosario</div>
-      <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
-        <div style="font:700 48px/1 'Cormorant Garamond',serif;color:#7a1f33">{{ wxTemp }}</div>
-        <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
-          <div style="font:700 18px/1.2 'Cormorant Garamond',serif;color:#2c3127">{{ wxSky }}</div>
-          <div style="font:500 15px/1.3 'Cormorant Garamond',serif;color:#2c3127">{{ wxRange }}</div>
+    </sc-if>
+    <sc-if value="{{ tab_viaje }}" hint-placeholder-val="{{ false }}">
+    <div role="tabpanel">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-top:0;flex-wrap:wrap">
+      <div style="font:700 22px/1 'Cormorant Garamond',serif;color:#7a1f33">300 km</div>
+      <div style="width:4px;height:4px;border-radius:50%;background:rgba(69,86,58,.5);align-self:center"></div>
+      <div style="font:700 22px/1 'Cormorant Garamond',serif;color:#7a1f33">3 h 15 min</div>
+    </div>
+    <p style="margin:6px 0 0;font:500 15px/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">Todo autopista por Panamericana y RN 9. Hay peajes: TelePASE o efectivo.</p>
+    </div>
+    </sc-if>
+    <sc-if value="{{ tab_clima }}" hint-placeholder-val="{{ false }}">
+    <div role="tabpanel">
+    <div style="font:700 11px/1.2 'Cormorant Garamond',serif;letter-spacing:.22em;text-transform:uppercase;color:#45563a">Sábado 12/12 · 19 h</div>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
+      <div style="font:600 40px/1 'Cormorant Garamond',serif;color:#7a1f33;font-variant-numeric:lining-nums">{{ wxTemp }}</div>
+      <div style="min-width:0">
+        <div style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127">{{ wxSky }}</div>
+        <div style="margin-top:2px;font:500 14px/1.3 'Cormorant Garamond',serif;color:#45563a">{{ wxRange }} · Lluvia {{ wxRain }}</div>
+        <div style="font:500 14px/1.3 'Cormorant Garamond',serif;color:#45563a">Atardecer ≈ 20:05 h</div>
+      </div>
+    </div>
+    <p style="margin:8px 0 0;font:italic 500 13px/1.35 'Cormorant Garamond',serif;color:#45563a;text-wrap:pretty">{{ wxNote }}</p>
+    </div>
+    </sc-if>
+    <sc-if value="{{ tab_contacto }}" hint-placeholder-val="{{ false }}">
+    <div role="tabpanel">
+    <div>
+      <sc-for list="{{ contacts }}" as="p" hint-placeholder-count="1">
+        <div>
+          <div style="font:700 11px/1.2 'Cormorant Garamond',serif;letter-spacing:.26em;text-transform:uppercase;color:#45563a">{{ p.role }}</div>
+          <div style="margin-top:6px;display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap"><span style="font:600 19px/1.2 'Cormorant Garamond',serif;color:#2c3127">{{ p.name }}</span><span style="font:500 15px/1.2 'Cormorant Garamond',serif;color:#2c3127;font-variant-numeric:lining-nums">{{ p.phone }}</span></div>
+          <sc-if value="{{ p.hasSub }}" hint-placeholder-val="{{ true }}"><p style="margin:4px 0 0;font:italic 500 15px/1.4 'Cormorant Garamond',serif;color:#45563a;text-wrap:pretty">{{ p.sub }}</p></sc-if>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <a href="{{ p.wa }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;box-sizing:border-box;border:1px solid #7a1f33;background:#7a1f33;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;text-decoration:none;cursor:pointer;white-space:nowrap;flex:1">whatsapp</a>
+            <a href="{{ p.tel }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 12px;box-sizing:border-box;border:1px solid rgba(122,31,51,.5);background:transparent;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#7a1f33;text-decoration:none;cursor:pointer;white-space:nowrap;flex:1">llamar</a>
+          </div>
         </div>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(69,86,58,.18)">
-        <div><div style="font:600 12px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase;color:#45563a">prob. de lluvia</div><div style="font:700 17px 'Cormorant Garamond',serif;color:#2c3127">{{ wxRain }}</div></div>
-        <div><div style="font:600 12px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase;color:#45563a">atardecer</div><div style="font:700 17px 'Cormorant Garamond',serif;color:#2c3127">≈ 20:05 h</div></div>
-      </div>
-      <p style="margin:10px 0 0;font:italic 500 14px/1.35 'Cormorant Garamond',serif;color:#45563a;text-wrap:pretty">{{ wxNote }}</p>
+      </sc-for>
     </div>
+    </div>
+    </sc-if>
   </div>
 </aside>
 
@@ -374,7 +389,7 @@ a:hover{color:#2c3127}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;phoneVicky&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+54 9 341 352-8317&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;phoneNico&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+54 9 11 3111-1017&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;plannerName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Sebastian&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;phonePlanner&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+54 9 3413 48-4631&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;rsvpEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycbzEC9BY29ztNfM_T39gMqaTudEZNWD_ENzixlh4jdKp9ojsGPVNpduzFdqNsoVTZag/exec&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;},&quot;tipsUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.google.com/maps/d/viewer?mid=1R32wxPQfXG7lcux4EOkFDY2NeF0xceI&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;},&quot;giftsUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Links&quot;}}">
 class Component extends DCLogic {
-  state = { opened: false, d: "00", h: "00", m: "00", s: "00", rsvpOpen: false, guideOpen: false, contactOpen: false, giftsOpen: false, giftCur: "ARS", copied: "",
+  state = { opened: false, d: "00", h: "00", m: "00", s: "00", rsvpOpen: false, guideOpen: false, contactOpen: false, infoTab: "hotel", giftsOpen: false, giftCur: "ARS", copied: "",
     attend: null, origin: "", otherCity: "", guests: [{ name: "", email: "", diet: "Ninguna", dietOther: "" }],
     noName: "", noEmail: "", noDup: "", noMsg: "", dups: null, remote: {}, c1: false, c2: false, sent: false, sending: false, error: "" };
   componentDidMount() {
@@ -512,8 +527,10 @@ class Component extends DCLogic {
       guideOpen: s.guideOpen, videoExpanded: s.guideOpen ? "true" : "false", videoLabel: s.guideOpen ? "ocultar video" : "ver video",
       toggleVideo: () => this.setState(st => ({ guideOpen: !st.guideOpen })),
       contactOpen: s.contactOpen, contactX: s.contactOpen ? "0%" : "105%", contactOp: s.contactOpen ? 1 : 0, contactVis: s.contactOpen ? "visible" : "hidden", openContact: () => this.modal("contactOpen", true), closeContact: () => this.modal("contactOpen", false),
+      infoTabs: [["hotel", "hoteles"], ["viaje", "viaje"], ["clima", "clima"], ["contacto", "contacto"]].map(([k, label]) => ({ label, sel: s.infoTab === k ? "true" : "false", fg: s.infoTab === k ? "#7a1f33" : "#45563a", line: s.infoTab === k ? "#7a1f33" : "transparent", pick: () => this.setState({ infoTab: k }) })),
+      tab_hotel: s.infoTab === "hotel", tab_viaje: s.infoTab === "viaje", tab_clima: s.infoTab === "clima", tab_contacto: s.infoTab === "contacto",
       hotels: [["Dazzler Rosario", true, "https://maps.app.goo.gl/vzRfnfhgsdBtBVDi6"], ["Savoy Rosario", true, "https://maps.app.goo.gl/itvt8Zc1ieFWk7yh7"], ["Urquiza Apart Hotel", false, "https://maps.app.goo.gl/tQpnrsvjNo2hrQrE8"]].map(([name, info, mapUrl], i) => { const email = "reservas@dazzlerrosario.com", subject = 'DAZZLER: Cod. 94704 "BODA Victoria y Nicolás / 12 DIC 2026"', k = "hotel" + i; return { n: (i + 1) + ".", name, hasInfo: info, noInfo: !info, email, subject, mailto: "mailto:" + email + "?subject=" + encodeURIComponent(subject), map: mapUrl, cols: info ? "minmax(0,1fr) minmax(0,1fr)" : "minmax(0,1fr)", copy: () => this.copy(k, subject), copyLabel: s.copied === k ? "copiado" : "copiar", cbg: s.copied === k ? "#7a1f33" : "transparent", cfg: s.copied === k ? "#fbfaf5" : "#7a1f33" }; }),
-      ...(s.wx ? { wxTemp: s.wx.t + "°", wxSky: s.wx.sky, wxRange: "Máx " + s.wx.max + "° · Mín " + s.wx.min + "°", wxRain: s.wx.rain + "%", wxNote: "Pronóstico actualizado (Open-Meteo)." } : { wxTemp: "27°", wxSky: "Cálido de verano", wxRange: "Máx 30° · Mín 19°", wxRain: "≈ 25%", wxNote: "Promedio histórico de diciembre. El pronóstico real aparece acá 2 semanas antes de la boda." }),
+      ...(s.wx ? { wxTemp: s.wx.t + "°", wxSky: s.wx.sky, wxRange: "Máx " + s.wx.max + "° · Mín " + s.wx.min + "°", wxRain: s.wx.rain + "%", wxNote: "Pronóstico actualizado (Open-Meteo)." } : { wxTemp: "27°", wxSky: "Cálido de verano", wxRange: "Máx 30° · Mín 19°", wxRain: "≈ 25%", wxNote: "Promedio de diciembre. El pronóstico real aparece 2 semanas antes." }),
       contacts: [contact("Wedding planner", P.plannerName ?? "Wedding planner", P.phonePlanner ?? "+54 9 3413 48-4631", "Consejos y recomendaciones. Está a disposición de todos los invitados para lo que necesiten.")],
       rsvpOpen: s.rsvpOpen, rsvpRef: this.rsvpRef, rsvpHidden: s.rsvpOpen ? "false" : "true", rsvpOp: s.rsvpOpen ? 1 : 0, rsvpVis: s.rsvpOpen ? "visible" : "hidden", rsvpY: s.rsvpOpen ? "0px" : "60px",
       barOp: s.sent ? 0 : 1, stepCount: this.stepState().length,
