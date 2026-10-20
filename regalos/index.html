@@ -29,7 +29,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
 <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;padding:32px 16px 130px;box-sizing:border-box">
 
   <header style="position:relative;background:#fbfaf6;border:1px solid rgba(69,86,58,.3);outline:1px solid rgba(69,86,58,.18);outline-offset:-6px;padding:30px calc(clamp(96px,34%,210px) + 16px) 26px 12px;text-align:center;box-shadow:0 3px 10px rgba(45,58,38,.07)">
-    <div style="position:absolute;top:7px;right:7px;bottom:7px;width:clamp(110px,40%,250px);background:url(../assets/acuarela-cierre.jpg) 50% 62%/auto 200% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 45%);mask-image:linear-gradient(90deg,transparent 0%,#000 45%);pointer-events:none"></div>
+    <div style="position:absolute;top:7px;right:7px;bottom:7px;width:clamp(110px,40%,250px);background:url(../assets/acuarela-cierre.jpg) 50% 62%/auto 200% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 16%);mask-image:linear-gradient(90deg,transparent 0%,#000 16%);pointer-events:none"></div>
     <h1 style="position:relative;margin:0;font:700 clamp(13px,3.9vw,22px)/1.2 'Cormorant Garamond',serif;letter-spacing:clamp(.06em,.6vw,.22em);padding-left:.2em;white-space:nowrap;text-transform:uppercase;color:#2c3127">lista de regalos</h1>
     <div style="font:400 clamp(26px,7.6vw,44px)/1.1 'Parisienne',cursive;color:#7a1f33;margin-top:8px;white-space:nowrap;position:relative">Vicky &amp; Nico</div>
     <p style="position:relative;margin:10px auto 0;max-width:260px;font:500 clamp(14px,3.9vw,17px)/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Estamos armando nuestra casa,<br>¡Elegí lo que quieras y sumalo al carrito!</p>
@@ -428,11 +428,11 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
 
   <sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
     <div style="margin-top:18px;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);padding:22px 18px">
-      <button type="button" onClick="{{ backToStore }}" style="border:0;background:transparent;padding:0;cursor:pointer;font:italic 600 15px 'Cormorant Garamond',serif;color:#45563a">← seguir eligiendo</button>
-      <div style="font:700 15px/1.2 'Cormorant Garamond',serif;letter-spacing:.24em;text-transform:uppercase;color:#2c3127;text-align:center;margin-top:16px">tu regalo</div>
+      <div style="font:700 15px/1.2 'Cormorant Garamond',serif;letter-spacing:.24em;text-transform:uppercase;color:#2c3127;text-align:center;margin-top:4px">tu regalo</div>
       <div style="display:flex;flex-direction:column;margin-top:14px;border-top:1px solid rgba(69,86,58,.2)">
-        <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2">
+        <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="0">
           <div style="display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(69,86,58,.2)">
+            <sc-if value="{{ l.hasImg }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="flex:none;width:52px;height:52px;border:1px solid rgba(69,86,58,.18);background:{{ l.thumbBg }}"></div></sc-if>
             <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
               <div style="font:700 18px/1.25 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">{{ l.name }}</div>
               <sc-if value="{{ l.showQty }}" hint-placeholder-val="{{ false }}"><div style="font:italic 500 15px/1.2 'Cormorant Garamond',serif;color:#45563a">{{ l.qtyLabel }}</div></sc-if>
@@ -441,7 +441,8 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
             <button type="button" onClick="{{ l.remove }}" aria-label="Quitar del carrito" title="Quitar" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(122,31,51,.35);background:transparent;color:#7a1f33;cursor:pointer;transition:background .2s ease" style-hover="background:rgba(122,31,51,.08)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"></path><path d="M10 11v6M14 11v6"></path><path d="M6 7l1 13h10l1-13"></path><path d="M9 7V4h6v3"></path></svg></button>
           </div>
         </sc-for>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;padding:16px;background:#7a1f33;color:#fbfaf5">
+        <div style="display:flex;justify-content:flex-end;padding:12px 0 2px"><button type="button" onClick="{{ backToStore }}" style="display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;box-sizing:border-box;border:1px solid #7a1f33;background:#7a1f33;color:#fbfaf5;cursor:pointer;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;transition:background .2s ease" style-hover="background:#5c1322"><span style="font-size:15px;letter-spacing:0">+</span>agregar más regalos</button></div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;padding:16px;background:#7a1f33;color:#fbfaf5">
           <sc-for list="{{ totals }}" as="t" hint-placeholder-count="1">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
               <span style="font:700 14px/1.2 'Cormorant Garamond',serif;letter-spacing:.24em;text-transform:uppercase">{{ t.label }}</span>
@@ -570,8 +571,8 @@ class Component extends DCLogic {
   go(view) { this.setState({ view, error: "" }); window.scrollTo({ top: 0, behavior: "smooth" }); }
   renderVals() {
     const s = this.state;
-    const lines = ITEMS.filter(i => s.cart[i.id]).map(i => ({ ...i, ...(s.meta[i.id] || {}) })).map(i => { const q = s.cart[i.id]; return { name: i.name, label: (q > 1 ? q + " × " : "") + i.name, showQty: q > 1, qtyLabel: q + " × " + fmt(i.price), sub: fmt(i.price * q), amt: i.price * q, remove: () => this.removeLine(st => { const c = { ...st.cart }; delete c[i.id]; return { cart: c }; }) }; })
-      .concat(s.free.map((fr, k) => ({ name: "Aporte libre" + (fr.cur === "USD" ? " en dólares" : ""), label: "Aporte libre", showQty: false, qtyLabel: "", sub: money(fr.amt, fr.cur), amt: fr.amt, cur: fr.cur, remove: () => this.removeLine(st => ({ free: st.free.filter((_, j) => j !== k) })) })));
+    const lines = ITEMS.filter(i => s.cart[i.id]).map(i => ({ ...i, ...(s.meta[i.id] || {}) })).map(i => { const q = s.cart[i.id]; return { img: "fotos/" + i.id + (["aspiradora","lavarropas","microondas","pasajes","sommier","tv"].includes(i.id) ? ".webp" : ".png"), hasImg: true, get thumbBg() { return "#f1ece2 url(\"" + this.img + "\") center/cover no-repeat"; }, name: i.name, label: (q > 1 ? q + " × " : "") + i.name, showQty: q > 1, qtyLabel: q + " × " + fmt(i.price), sub: fmt(i.price * q), amt: i.price * q, remove: () => this.removeLine(st => { const c = { ...st.cart }; delete c[i.id]; return { cart: c }; }) }; })
+      .concat(s.free.map((fr, k) => ({ img: "", hasImg: false, name: "Aporte libre" + (fr.cur === "USD" ? " en dólares" : ""), label: "Aporte libre", showQty: false, qtyLabel: "", sub: money(fr.amt, fr.cur), amt: fr.amt, cur: fr.cur, remove: () => this.removeLine(st => ({ free: st.free.filter((_, j) => j !== k) })) })));
     const sum = c => lines.filter(l => (l.cur || "ARS") === c).reduce((t, l) => t + l.amt, 0);
     const total = sum("ARS"), totalUSD = sum("USD");
     const totalsArr = [total > 0 || !totalUSD ? { label: totalUSD ? "Total en pesos" : "Total", value: fmt(total), cur: "ARS", amt: total } : null, totalUSD ? { label: total ? "Total en dólares" : "Total", value: money(totalUSD, "USD"), cur: "USD", amt: totalUSD } : null].filter(Boolean);
@@ -593,7 +594,7 @@ class Component extends DCLogic {
       countLabel: count === 1 ? "1 regalo" : count + " regalos",
       totalFmt: totalsArr.map(t => t.value).join(" + "), cartLines: lines,
       goCheckout: () => this.go("checkout"), backToStore: () => this.go("store"),
-      bankBlocks: totalsArr.map(t => { const acc = t.cur === "USD" ? { alias: "vicynicusd", cbu: "0070751231004004552781" } : { alias: "vicynic", cbu: "0070751230004005498449" }, p = t.cur; return { title: t.cur === "USD" ? "Cuenta en dólares" : "Cuenta en pesos", showTitle: totalsArr.length > 1 || t.cur === "USD", rows: [row("Banco", "Galicia"), row("Titular", "Victoria Magali Alberto"), row("CUIL", "27-42129092-5"), row("Alias", acc.alias, p + "alias"), row("CBU", acc.cbu, p + "cbu"), row("Monto", t.value, p + "monto")] }; }),
+      bankBlocks: totalsArr.map(t => { const acc = t.cur === "USD" ? { alias: "vicynicusd", cbu: "0070751231004004552781" } : { alias: "vicynic", cbu: "0070751230004005498449" }, p = t.cur; return { title: t.cur === "USD" ? "Cuenta en dólares" : "Cuenta en pesos", showTitle: totalsArr.length > 1 || t.cur === "USD", rows: [row("Alias", acc.alias, p + "alias"), row("CBU", acc.cbu, p + "cbu"), row("Titular", "Victoria Magali Alberto"), row("CUIL", "27-42129092-5"), row("Banco", "Galicia"), row("Monto", t.value, p + "monto")] }; }),
       name: s.name, onName: e => this.setState({ name: e.target.value, error: "" }),
       message: s.message, onMessage: e => this.setState({ message: e.target.value }),
       onFile: e => { const f = e.target.files && e.target.files[0]; this.setState({ file: f || null, error: "" }); },
