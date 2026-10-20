@@ -28,20 +28,26 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
 <div style="position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:0;pointer-events:none;background:url(../assets/floral-abejas.webp) center/cover no-repeat;transform:translateZ(0);will-change:transform"></div>
 <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;padding:32px 16px 130px;box-sizing:border-box">
 
-  <header style="position:relative;background:#fbfaf6;border:1px solid rgba(69,86,58,.3);outline:1px solid rgba(69,86,58,.18);outline-offset:-6px;padding:30px clamp(100px,36%,230px) 26px 14px;text-align:center;box-shadow:0 3px 10px rgba(45,58,38,.07)">
-    <div style="position:absolute;top:7px;right:7px;bottom:7px;width:clamp(110px,38%,240px);background:url(../assets/acuarela-cierre.jpg) 50% 60%/auto 215% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 45%);mask-image:linear-gradient(90deg,transparent 0%,#000 45%);pointer-events:none"></div>
-    <h1 style="position:relative;margin:0;font:700 clamp(15px,4.4vw,24px)/1.2 'Cormorant Garamond',serif;letter-spacing:clamp(.12em,.8vw,.26em);padding-left:.2em;white-space:nowrap;text-transform:uppercase;color:#2c3127">lista de regalos</h1>
+  <header style="position:relative;background:#fbfaf6;border:1px solid rgba(69,86,58,.3);outline:1px solid rgba(69,86,58,.18);outline-offset:-6px;padding:30px calc(clamp(96px,34%,210px) + 16px) 26px 12px;text-align:center;box-shadow:0 3px 10px rgba(45,58,38,.07)">
+    <div style="position:absolute;top:7px;right:7px;bottom:7px;width:clamp(110px,40%,250px);background:url(../assets/acuarela-cierre.jpg) 50% 62%/auto 200% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 45%);mask-image:linear-gradient(90deg,transparent 0%,#000 45%);pointer-events:none"></div>
+    <h1 style="position:relative;margin:0;font:700 clamp(13px,3.9vw,22px)/1.2 'Cormorant Garamond',serif;letter-spacing:clamp(.06em,.6vw,.22em);padding-left:.2em;white-space:nowrap;text-transform:uppercase;color:#2c3127">lista de regalos</h1>
     <div style="font:400 clamp(26px,7.6vw,44px)/1.1 'Parisienne',cursive;color:#7a1f33;margin-top:8px;white-space:nowrap;position:relative">Vicky &amp; Nico</div>
-    <p style="position:relative;margin:10px auto 0;max-width:260px;font:500 clamp(14px,3.9vw,17px)/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Estamos armando nuestra casa. Elegí lo que quieras regalarnos y sumalo al carrito.</p>
+    <p style="position:relative;margin:10px auto 0;max-width:260px;font:500 clamp(14px,3.9vw,17px)/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Estamos armando nuestra casa,<br>¡Elegí lo que quieras y sumalo al carrito!</p>
   </header>
 
   <sc-if value="{{ isStore }}" hint-placeholder-val="{{ true }}">
-    <div role="group" aria-label="Ordenar" style="display:flex;align-items:center;gap:6px;margin-top:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:8px 10px;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06)">
-      <span style="flex:none;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#45563a;padding-right:2px">ordenar</span>
-      <sc-for list="{{ sorts }}" as="so" hint-placeholder-count="4">
-        <button type="button" aria-pressed="{{ so.sel }}" onClick="{{ so.pick }}" style="flex:none;min-height:38px;padding:0 12px;border:1px solid #7a1f33;background:{{ so.bg }};color:{{ so.fg }};cursor:pointer;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease,color .2s ease">{{ so.label }}</button>
-      </sc-for>
-    </div>
+    <label style="display:flex;align-items:center;gap:10px;margin-top:16px;padding:8px 10px 8px 14px;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06)">
+      <span style="flex:none;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#45563a">ordenar por</span>
+      <span style="position:relative;flex:1;min-width:0;display:block">
+        <select value="{{ sortVal }}" onChange="{{ onSort }}" aria-label="Ordenar regalos" style="width:100%;min-height:44px;padding:0 38px 0 12px;-webkit-appearance:none;appearance:none;border:1px solid #7a1f33;border-radius:0;background:#fbfaf6;color:#7a1f33;cursor:pointer;font:700 12px/1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase">
+          <option value="dest">Destacados</option>
+          <option value="az">A–Z</option>
+          <option value="hi">Mayor precio</option>
+          <option value="lo">Menor precio</option>
+        </select>
+        <span style="position:absolute;right:14px;top:50%;width:8px;height:8px;border-right:1.5px solid #7a1f33;border-bottom:1.5px solid #7a1f33;transform:translateY(-70%) rotate(45deg);pointer-events:none"></span>
+      </span>
+    </label>
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px">
       <div data-gift="sabanas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.sabanas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
@@ -283,11 +289,131 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
           </sc-if>
         </div>
       </div>
+      <div data-gift="lavarropas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.lavarropas.ord }}">
+        <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font:400 22px/1.1 'Parisienne',cursive;color:#7a1f33">Lavarropas</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
+          <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Lavarropas</div>
+          <div style="font:italic 500 14px/1.3 'Cormorant Garamond',serif;color:#45563a;text-wrap:balance">Carga frontal, 8 kg</div>
+          <div data-role="price" style="font:700 17px/1.2 'Cormorant Garamond',serif;color:#7a1f33;margin-top:auto;padding-top:6px">$950.000</div>
+          <sc-if value="{{ g.lavarropas.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;margin-top:8px;border:1px solid #7a1f33;min-height:44px">
+              <button type="button" onClick="{{ g.lavarropas.dec }}" aria-label="Quitar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">−</button>
+              <div style="font:700 16px/1 'Cormorant Garamond',serif;color:#2c3127">{{ g.lavarropas.qty }}</div>
+              <button type="button" onClick="{{ g.lavarropas.inc }}" aria-label="Sumar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ g.lavarropas.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ g.lavarropas.inc }}" style="margin-top:8px;min-height:44px;border:1px solid #5c1322;background:#7a1f33;cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;transition:background .3s ease" style-hover="background:#5c1322">agregar al carrito</button>
+          </sc-if>
+        </div>
+      </div>
+      <div data-gift="tv" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.tv.ord }}">
+        <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font:400 22px/1.1 'Parisienne',cursive;color:#7a1f33">Smart TV</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
+          <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Smart TV</div>
+          <div style="font:italic 500 14px/1.3 'Cormorant Garamond',serif;color:#45563a;text-wrap:balance">55 pulgadas, para las pelis</div>
+          <div data-role="price" style="font:700 17px/1.2 'Cormorant Garamond',serif;color:#7a1f33;margin-top:auto;padding-top:6px">$850.000</div>
+          <sc-if value="{{ g.tv.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;margin-top:8px;border:1px solid #7a1f33;min-height:44px">
+              <button type="button" onClick="{{ g.tv.dec }}" aria-label="Quitar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">−</button>
+              <div style="font:700 16px/1 'Cormorant Garamond',serif;color:#2c3127">{{ g.tv.qty }}</div>
+              <button type="button" onClick="{{ g.tv.inc }}" aria-label="Sumar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ g.tv.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ g.tv.inc }}" style="margin-top:8px;min-height:44px;border:1px solid #5c1322;background:#7a1f33;cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;transition:background .3s ease" style-hover="background:#5c1322">agregar al carrito</button>
+          </sc-if>
+        </div>
+      </div>
+      <div data-gift="sommier" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.sommier.ord }}">
+        <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font:400 22px/1.1 'Parisienne',cursive;color:#7a1f33">Colchón y sommier</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
+          <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Colchón y sommier</div>
+          <div style="font:italic 500 14px/1.3 'Cormorant Garamond',serif;color:#45563a;text-wrap:balance">Queen, para descansar</div>
+          <div data-role="price" style="font:700 17px/1.2 'Cormorant Garamond',serif;color:#7a1f33;margin-top:auto;padding-top:6px">$1.200.000</div>
+          <sc-if value="{{ g.sommier.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;margin-top:8px;border:1px solid #7a1f33;min-height:44px">
+              <button type="button" onClick="{{ g.sommier.dec }}" aria-label="Quitar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">−</button>
+              <div style="font:700 16px/1 'Cormorant Garamond',serif;color:#2c3127">{{ g.sommier.qty }}</div>
+              <button type="button" onClick="{{ g.sommier.inc }}" aria-label="Sumar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ g.sommier.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ g.sommier.inc }}" style="margin-top:8px;min-height:44px;border:1px solid #5c1322;background:#7a1f33;cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;transition:background .3s ease" style-hover="background:#5c1322">agregar al carrito</button>
+          </sc-if>
+        </div>
+      </div>
+      <div data-gift="pasajes" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.pasajes.ord }}">
+        <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font:400 22px/1.1 'Parisienne',cursive;color:#7a1f33">Pasajes luna de miel</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
+          <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Pasajes luna de miel</div>
+          <div style="font:italic 500 14px/1.3 'Cormorant Garamond',serif;color:#45563a;text-wrap:balance">¡Nos ayudás a volar!</div>
+          <div data-role="price" style="font:700 17px/1.2 'Cormorant Garamond',serif;color:#7a1f33;margin-top:auto;padding-top:6px">$1.500.000</div>
+          <sc-if value="{{ g.pasajes.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;margin-top:8px;border:1px solid #7a1f33;min-height:44px">
+              <button type="button" onClick="{{ g.pasajes.dec }}" aria-label="Quitar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">−</button>
+              <div style="font:700 16px/1 'Cormorant Garamond',serif;color:#2c3127">{{ g.pasajes.qty }}</div>
+              <button type="button" onClick="{{ g.pasajes.inc }}" aria-label="Sumar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ g.pasajes.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ g.pasajes.inc }}" style="margin-top:8px;min-height:44px;border:1px solid #5c1322;background:#7a1f33;cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;transition:background .3s ease" style-hover="background:#5c1322">agregar al carrito</button>
+          </sc-if>
+        </div>
+      </div>
+      <div data-gift="microondas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.microondas.ord }}">
+        <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font:400 22px/1.1 'Parisienne',cursive;color:#7a1f33">Microondas</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
+          <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Microondas</div>
+          <div style="font:italic 500 14px/1.3 'Cormorant Garamond',serif;color:#45563a;text-wrap:balance">Para calentar el café que se enfría</div>
+          <div data-role="price" style="font:700 17px/1.2 'Cormorant Garamond',serif;color:#7a1f33;margin-top:auto;padding-top:6px">$320.000</div>
+          <sc-if value="{{ g.microondas.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;margin-top:8px;border:1px solid #7a1f33;min-height:44px">
+              <button type="button" onClick="{{ g.microondas.dec }}" aria-label="Quitar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">−</button>
+              <div style="font:700 16px/1 'Cormorant Garamond',serif;color:#2c3127">{{ g.microondas.qty }}</div>
+              <button type="button" onClick="{{ g.microondas.inc }}" aria-label="Sumar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ g.microondas.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ g.microondas.inc }}" style="margin-top:8px;min-height:44px;border:1px solid #5c1322;background:#7a1f33;cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;transition:background .3s ease" style-hover="background:#5c1322">agregar al carrito</button>
+          </sc-if>
+        </div>
+      </div>
+      <div data-gift="aspiradora" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.aspiradora.ord }}">
+        <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font:400 22px/1.1 'Parisienne',cursive;color:#7a1f33">Aspiradora</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
+          <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Aspiradora</div>
+          <div style="font:italic 500 14px/1.3 'Cormorant Garamond',serif;color:#45563a;text-wrap:balance">Para dejar la casa impecable</div>
+          <div data-role="price" style="font:700 17px/1.2 'Cormorant Garamond',serif;color:#7a1f33;margin-top:auto;padding-top:6px">$390.000</div>
+          <sc-if value="{{ g.aspiradora.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;margin-top:8px;border:1px solid #7a1f33;min-height:44px">
+              <button type="button" onClick="{{ g.aspiradora.dec }}" aria-label="Quitar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">−</button>
+              <div style="font:700 16px/1 'Cormorant Garamond',serif;color:#2c3127">{{ g.aspiradora.qty }}</div>
+              <button type="button" onClick="{{ g.aspiradora.inc }}" aria-label="Sumar uno" style="height:44px;border:0;background:transparent;font:600 22px/1 'Cormorant Garamond',serif;color:#7a1f33;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ g.aspiradora.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ g.aspiradora.inc }}" style="margin-top:8px;min-height:44px;border:1px solid #5c1322;background:#7a1f33;cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;color:#fbfaf5;transition:background .3s ease" style-hover="background:#5c1322">agregar al carrito</button>
+          </sc-if>
+        </div>
+      </div>
     </div>
 
     <div style="margin-top:12px;background:#fbfaf6;border:1px solid rgba(69,86,58,.25);box-shadow:0 3px 10px rgba(45,58,38,.06);padding:18px 16px;text-align:center">
       <div style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127">Aporte libre</div>
-      <div style="font:italic 500 14px/1.35 'Cormorant Garamond',serif;color:#45563a;margin-top:4px">Para la luna de miel o lo que más nos haga falta.</div>
+      <div style="font:italic 500 14px/1.35 'Cormorant Garamond',serif;color:#45563a;margin-top:4px">¡Para la luna de miel!</div>
       <div role="tablist" aria-label="Moneda" style="display:grid;grid-template-columns:1fr 1fr;margin:14px auto 0;max-width:240px;border:1px solid #7a1f33">
         <sc-for list="{{ curTabs }}" as="t" hint-placeholder-count="2">
           <button type="button" role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="min-height:44px;border:0;background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;font:700 12px/1.2 'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;transition:background .2s ease">{{ t.label }}</button>
@@ -394,7 +520,13 @@ const ITEMS = [
   ["manta", "Manta tejida", "Para el sillón", 55000],
   ["plantas", "Plantas y macetas", "Para darle vida a la casa", 40000],
   ["cuadro", "Cuadro", "Para la pared del comedor", 70000],
-  ["batidora", "Batidora", "Para las tortas de domingo", 80000]
+  ["batidora", "Batidora", "Para las tortas de domingo", 80000],
+  ["lavarropas", "Lavarropas", "Carga frontal,  8 kg", 950000],
+  ["tv", "Smart TV", "55 pulgadas,  para las pelis", 850000],
+  ["sommier", "Colchón y sommier", "Queen,  para descansar", 1200000],
+  ["pasajes", "Pasajes luna de miel", "¡Nos ayudás a volar!", 1500000],
+  ["microondas", "Microondas", "Para calentar el café que se enfría", 320000],
+  ["aspiradora", "Aspiradora", "Para dejar la casa impecable", 390000]
 ].map(([id, name, desc, price]) => ({ id, name, desc, price }));
 const money = (n, c) => (c === "USD" ? "US$" : "$") + Math.round(n).toLocaleString("es-AR");
 const fmt = n => "$" + Math.round(n).toLocaleString("es-AR");
@@ -448,6 +580,7 @@ class Component extends DCLogic {
     const freeN = parseInt(s.freeAmount, 10) || 0;
     return {
       isStore: s.view === "store", isCheckout: s.view === "checkout", isDone: s.view === "done",
+      sortVal: s.sort, onSort: e => this.setSort(e.target.value),
       sorts: [["dest", "destacados"], ["az", "A–Z"], ["hi", "mayor precio"], ["lo", "menor precio"]].map(([k, label]) => ({ label, sel: s.sort === k ? "true" : "false", bg: s.sort === k ? "#7a1f33" : "#fbfaf6", fg: s.sort === k ? "#fbfaf5" : "#7a1f33", pick: () => this.setSort(k) })),
       g: Object.fromEntries(ITEMS.map((i, ix) => { const q = s.cart[i.id] || 0; return [i.id, { ord: s.ord[i.id] ?? ix, qty: q, inCart: q > 0, notInCart: q === 0, inc: e => this.setQty(i.id, 1, e), dec: e => this.setQty(i.id, -1, e) }]; })),
       freeAmountFmt: freeN ? freeN.toLocaleString("es-AR") : "",
