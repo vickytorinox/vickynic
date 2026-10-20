@@ -33,9 +33,9 @@ a:hover{color:#5c1322}
     <div style="font:400 clamp(26px,7.6vw,44px)/1.1 'Parisienne',cursive;color:#7a1f33;margin-top:8px;white-space:nowrap;position:relative">Vicky &amp; Nico</div>
   </header>
 
-  <div role="tablist" aria-label="Info útil" style="position:sticky;top:0;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:14px;padding:8px 0;background:linear-gradient(#f8f5ee 70%,rgba(248,245,238,0))">
+  <div role="tablist" aria-label="Info útil" style="position:sticky;top:0;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,1.4vw,6px);margin-top:14px;padding:8px 0;background:linear-gradient(#f8f5ee 70%,rgba(248,245,238,0))">
     <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="4">
-      <button type="button" role="tab" aria-selected="{{ tb.sel }}" onClick="{{ tb.pick }}" style="min-height:46px;padding:0 2px;border:1px solid #7a1f33;border-radius:1px;background:{{ tb.bg }};color:{{ tb.fg }};box-shadow:{{ tb.sh }};cursor:pointer;font:700 12px/1.1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;transition:background .2s ease,color .2s ease">{{ tb.label }}</button>
+      <button type="button" role="tab" aria-selected="{{ tb.sel }}" onClick="{{ tb.pick }}" style="min-width:0;min-height:46px;padding:0 2px;border:1px solid #7a1f33;border-radius:1px;background:{{ tb.bg }};color:{{ tb.fg }};box-shadow:{{ tb.sh }};cursor:pointer;font:700 clamp(10px,2.9vw,12px)/1.1 'Cormorant Garamond',serif;letter-spacing:clamp(.02em,.5vw,.12em);text-transform:uppercase;overflow:hidden;text-overflow:clip;white-space:nowrap;transition:background .2s ease,color .2s ease">{{ tb.label }}</button>
     </sc-for>
   </div>
 
@@ -50,7 +50,7 @@ a:hover{color:#5c1322}
           <p style="margin:8px 0 0;font:500 16px/1.45 'Cormorant Garamond',serif;color:#2c3127;text-wrap:pretty">Para reservar esta promo, enviar por mail a <a href="{{ ht.mailto }}" style="color:#7a1f33;font-weight:700;overflow-wrap:anywhere">{{ ht.email }}</a> con el asunto:</p>
           <div style="margin-top:8px;padding:9px 12px;background:#f1ece2;font:600 14.5px/1.35 'Cormorant Garamond',serif;color:#2c3127;overflow-wrap:anywhere">{{ ht.subject }}</div>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px">
-            <a href="{{ ht.map }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;box-sizing:border-box;border:1px solid rgba(122,31,51,.5);background:transparent;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:#7a1f33;text-decoration:none;white-space:nowrap">ubicación</a>
+            <a href="{{ ht.map }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;box-sizing:border-box;border:1px solid rgba(122,31,51,.5);background:transparent;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:clamp(.04em,.6vw,.12em);text-transform:uppercase;color:#7a1f33;text-decoration:none;white-space:nowrap;min-width:0">ubicación</a>
             <button type="button" onClick="{{ ht.copy }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;box-sizing:border-box;border:1px solid rgba(122,31,51,.5);background:{{ ht.cbg }};color:{{ ht.cfg }};cursor:pointer;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">{{ ht.copyLabel }}</button>
             <a href="{{ ht.mailto }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;box-sizing:border-box;border:1px solid #7a1f33;background:#7a1f33;font:700 11px/1 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:#fbfaf5;text-decoration:none;white-space:nowrap">reservar</a>
           </div>
