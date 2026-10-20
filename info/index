@@ -1,0 +1,27 @@
+INFO ÚTIL
+Vicky & Nico
+{{ TB.LABEL }} 
+{{ ht.n }}
+{{ HT.NAME }}
+¡Tenemos un descuento especial para este hotel! {{ ht.extra }}
+Para reservar esta promo, enviar por mail a {{ ht.email }} con el asunto:
+{{ ht.subject }}
+UBICACIÓN {{ HT.COPYLABEL }} RESERVAR 
+300 km
+BUENOS AIRES → ROSARIO
+{{ RT.TITLE }}
+{{ rt.time }}
+{{ rt.text }}
+
+	.	1. Si tenés lugares en el auto para compartir viaje, ¡avisanos! 2. Si no tenés cómo venir, ¡avisanos! 3. También podés utilizar la web de Carpoolear. 
+SÁBADO 12/12 · 19 H
+{{ wxTemp }}
+{{ wxSky }}
+{{ wxRange }} · Lluvia {{ wxRain }}
+Atardecer ≈ 20:05 h
+{{ wxNote }}
+WEDDING PLANNER
+{{ plannerName }}
+{{ plannerPhone }}
+Consejos y recomendaciones. Está a disposición de todos los invitados para lo que necesiten.
+WHATSAPP LLAMAR 
