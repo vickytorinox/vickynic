@@ -367,7 +367,7 @@ a:hover{color:#2c3127}
       </sc-if>
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
         <div style="opacity:{{ thanksOp }};transition:opacity .35s ease">
-        <img src="assets/sello-gracias.webp" alt="" width="140" height="137" style="display:block;width:140px;height:auto;margin:26px auto 0;transform:rotate(-3deg);filter:drop-shadow(0 8px 8px rgba(40,50,30,.2))">
+        <img src="assets/sello-gracias.png" alt="" width="140" height="137" style="display:block;width:140px;height:auto;margin:26px auto 0;transform:rotate(-3deg);filter:drop-shadow(0 8px 8px rgba(40,50,30,.2))">
         <div style="margin-top:18px;font:400 40px/1.2 Parisienne,cursive;color:#7d2c3b">{{ thanksTitle }}</div>
         <p style="margin:12px auto 0;max-width:330px;font:500 20px/1.5 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">{{ thanksText }}</p>
         <div style="margin-top:26px"><button type="button" onClick="{{ closeRsvp }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;box-sizing:border-box;padding:0 clamp(14px,4vw,24px);border:1px solid #5c1322;border-radius:1px;background:#7a1f33;box-shadow:0 6px 14px rgba(70,25,35,.24);cursor:pointer;font:700 14px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#fbfaf5;white-space:normal;text-align:center;line-height:1.2;max-width:100%;text-decoration:none;transition:background .3s ease,color .3s ease" style-hover="background:#5c1322;color:#fbfaf5">volver a la invitación</button></div>
@@ -416,7 +416,7 @@ class Component extends DCLogic {
     noName: "", noEmail: "", noDup: "", noMsg: "", dups: null, remote: {}, c1: false, c2: false, sent: false, sending: false, error: "" };
   readySeal() {
     if (this._sealP) return this._sealP;
-    this._sealP = new Promise(res => { try { const im = new Image(); this._sealImg = im; const ok = () => res(); im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(ok); im.onerror = ok; im.src = "assets/sello-gracias.webp"; } catch (e) { res(); } setTimeout(res, 1500); });
+    this._sealP = new Promise(res => { try { const im = new Image(); this._sealImg = im; const ok = () => res(); im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(ok); im.onerror = ok; im.src = "assets/sello-gracias.png"; } catch (e) { res(); } setTimeout(res, 1500); });
     return this._sealP;
   }
   unlockSong() {
