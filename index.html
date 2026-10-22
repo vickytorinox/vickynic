@@ -30,6 +30,7 @@ body{background:#f8f5ee;font-family:"Cormorant Garamond",Georgia,serif;color:#45
 a{color:#45563a;text-decoration:none}
 a:hover{color:#2c3127}
 @keyframes vnPulse{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes vnPetal{0%{transform:translate3d(0,-8vh,0) rotate(0deg) rotateX(0deg);opacity:0}8%{opacity:1}25%{transform:translate3d(calc(var(--dx1) * .5),24vh,0) rotate(calc(var(--r1) * .5)) rotateX(60deg)}50%{transform:translate3d(var(--dx1),52vh,0) rotate(var(--r1)) rotateX(0deg)}75%{transform:translate3d(calc((var(--dx1) + var(--dx2)) * .5),80vh,0) rotate(calc((var(--r1) + var(--r2)) * .5)) rotateX(60deg)}90%{opacity:1}100%{transform:translate3d(var(--dx2),112vh,0) rotate(var(--r2)) rotateX(0deg);opacity:0}}
 </style>
 </helmet>
 <div style="position:relative;min-height:100vh;background:#f8f5ee;overflow-x:clip">
@@ -263,6 +264,7 @@ a:hover{color:#2c3127}
 
 <div role="dialog" aria-modal="true" aria-label="Confirmar asistencia" aria-hidden="{{ rsvpHidden }}" ref="{{ rsvpRef }}" style="position:fixed;inset:0;z-index:80;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:{{ rsvpOp }};visibility:{{ rsvpVis }};transition:opacity .4s ease,visibility .4s ease">
   <div style="position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;pointer-events:none;background:url(assets/floral-abejas.webp) center/cover no-repeat;transform:translateZ(0);will-change:transform"></div>
+  <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">{{ petals }}</sc-if>
   <div style="position:relative;max-width:520px;margin:0 auto;padding:16px 14px 70px;box-sizing:border-box;transform:translateY({{ rsvpY }});transition:transform .55s cubic-bezier(.2,.75,.2,1)">
     <div style="position:sticky;top:10px;z-index:2;display:flex;align-items:center;gap:10px">
       <div style="flex:1;min-width:0;min-height:48px;box-sizing:border-box;display:flex;align-items:center;padding:6px 14px;background:rgba(251,250,246,.94);border:1px solid rgba(122,31,51,.25);border-radius:26px;box-shadow:0 4px 12px rgba(44,49,39,.12);opacity:{{ barOp }};transition:opacity .3s ease">
@@ -364,10 +366,12 @@ a:hover{color:#2c3127}
         </sc-if>
       </sc-if>
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-        <img src="assets/v-sello-bordo.webp" alt="" style="display:block;width:140px;height:auto;margin:26px auto 0;transform:rotate(-3deg);filter:drop-shadow(0 8px 8px rgba(40,50,30,.2))">
+        <div style="opacity:{{ thanksOp }};transition:opacity .35s ease">
+        <img src="assets/sello-gracias.webp" alt="" width="140" height="137" style="display:block;width:140px;height:auto;margin:26px auto 0;transform:rotate(-3deg);filter:drop-shadow(0 8px 8px rgba(40,50,30,.2))">
         <div style="margin-top:18px;font:400 40px/1.2 Parisienne,cursive;color:#7d2c3b">{{ thanksTitle }}</div>
         <p style="margin:12px auto 0;max-width:330px;font:500 20px/1.5 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">{{ thanksText }}</p>
         <div style="margin-top:26px"><button type="button" onClick="{{ closeRsvp }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;box-sizing:border-box;padding:0 clamp(14px,4vw,24px);border:1px solid #5c1322;border-radius:1px;background:#7a1f33;box-shadow:0 6px 14px rgba(70,25,35,.24);cursor:pointer;font:700 14px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#fbfaf5;white-space:normal;text-align:center;line-height:1.2;max-width:100%;text-decoration:none;transition:background .3s ease,color .3s ease" style-hover="background:#5c1322;color:#fbfaf5">volver a la invitación</button></div>
+        </div>
       </sc-if>
     </div>
   </div>
@@ -410,10 +414,41 @@ class Component extends DCLogic {
   state = { opened: false, itinInfoOpen: false, d: "00", h: "00", m: "00", s: "00", rsvpOpen: false, guideOpen: false, contactOpen: false, infoTab: "hotel", giftsOpen: false, giftCur: "ARS", copied: "",
     attend: null, origin: "", otherCity: "", guests: [{ name: "", email: "", diet: "Ninguna", dietOther: "" }],
     noName: "", noEmail: "", noDup: "", noMsg: "", dups: null, remote: {}, c1: false, c2: false, sent: false, sending: false, error: "" };
+  readySeal() {
+    if (this._sealP) return this._sealP;
+    this._sealP = new Promise(res => { try { const im = new Image(); this._sealImg = im; const ok = () => res(); im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(ok); im.onerror = ok; im.src = "assets/sello-gracias.webp"; } catch (e) { res(); } setTimeout(res, 1500); });
+    return this._sealP;
+  }
+  unlockSong() {
+    try { if (!this.song) { this.song = new Audio("assets/celebration.mp3"); this.song.preload = "auto"; this.song.playsInline = true; }
+      if (!this.songUnlocked) { const a = this.song; a.muted = true; const p = a.play(); const done = () => { a.pause(); a.currentTime = 0; a.muted = false; }; if (p && p.then) p.then(done, () => { a.muted = false; }); else done(); this.songUnlocked = true; } } catch (e) {}
+  }
+  startPetals() { clearTimeout(this.petalEndT); clearTimeout(this.petalOffT); clearTimeout(this.petalStartT); this.setState({ petalsFade: false }); this.petalStartT = setTimeout(() => this.setState({ petalsOn: true }), 450); this.petalEndT = setTimeout(() => this.endPetals(), 30000); }
+  endPetals() { clearTimeout(this.petalEndT); this.setState({ petalsFade: true }); clearTimeout(this.petalOffT); this.petalOffT = setTimeout(() => this.setState({ petalsOn: false, petalsFade: false }), 2600); }
+  playSong() {
+    this.startPetals();
+    const a = this.song; if (!a) return; clearInterval(this.fadeT);
+    try { a.muted = false; a.volume = 1; a.currentTime = 0; const p = a.play(); if (p && p.catch) p.catch(() => { this.setState({ songOn: false }); clearTimeout(this.petalEndT); this.petalEndT = setTimeout(() => this.endPetals(), 23000); }); this.setState({ songOn: true });
+      a.onended = () => { this.setState({ songOn: false }); this.endPetals(); };
+      a.onloadedmetadata = () => { if (a.duration) { clearTimeout(this.petalEndT); this.petalEndT = setTimeout(() => this.endPetals(), (a.duration - a.currentTime) * 1000 + 600); } };
+      if (a.duration) a.onloadedmetadata();
+      a.ontimeupdate = () => { if (a.duration && a.duration - a.currentTime < 3 && !this.fadeT) this.fadeT = setInterval(() => { a.volume = Math.max(0, a.volume - 0.07); if (a.volume <= 0) { clearInterval(this.fadeT); this.fadeT = null; } }, 200); };
+    } catch (e) {}
+  }
+  stopSong() { clearTimeout(this.petalStartT); clearTimeout(this.petalEndT); clearTimeout(this.petalOffT); if (this.state.petalsOn) this.setState({ petalsOn: false, petalsFade: false }); const a = this.song; clearInterval(this.fadeT); this.fadeT = null; if (a) { a.pause(); a.currentTime = 0; } if (this.state.songOn) this.setState({ songOn: false }); }
+  toggleSong = () => { const a = this.song; if (!a) return; if (a.paused) { a.volume = 1; a.play().catch(() => {}); this.setState({ songOn: true }); this.startPetals(); a.onloadedmetadata && a.onloadedmetadata(); } else { a.pause(); this.setState({ songOn: false }); this.endPetals(); } };
+  petalLayer() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return null;
+    if (!this._petals) { const e = React.createElement, rnd = (a, b) => a + Math.random() * (b - a);
+      const kids = Array.from({ length: 115 }, (_, k) => { const w = rnd(9, 17), dur = rnd(6.5, 11);
+        return e("div", { key: k, style: { position: "absolute", top: 0, left: rnd(-2, 98) + "%", width: w + "px", height: w * 1.25 + "px", borderRadius: "150% 0 150% 0", background: "linear-gradient(135deg,#ffffff 30%,#ebe4d8)", boxShadow: "0 1px 2px rgba(90,60,50,.25)", opacity: rnd(.8, 1), backfaceVisibility: "visible", animation: "vnPetal " + dur + "s linear " + (k < 40 ? -rnd(0, dur * 0.45) : rnd(0, 3.5)) + "s infinite both", "--dx1": rnd(-40, 40) + "px", "--dx2": rnd(-80, 80) + "px", "--r1": rnd(-160, 160) + "deg", "--r2": rnd(-360, 360) + "deg" } }); });
+      this._petals = kids; }
+    return React.createElement("div", { key: "run" + (this.petalRun || 0), "aria-hidden": "true", style: { position: "fixed", inset: 0, zIndex: 3, pointerEvents: "none", overflow: "hidden", opacity: this.state.petalsFade ? 0 : 1, transition: "opacity 2.5s ease" } }, this._petals);
+  }
   componentDidMount() {
     this.mq = window.matchMedia("(max-width: 600px)"); this.onMq = () => this.setState({ narrow: this.mq.matches }); this.onMq(); this.mq.addEventListener("change", this.onMq);
     this.loadWx(); this.lock(true); this.tick(); this.timer = setInterval(() => this.tick(), 1000); }
-  componentWillUnmount() { if (this.mq) this.mq.removeEventListener("change", this.onMq); clearInterval(this.timer); this.lock(false); }
+  componentWillUnmount() { this.stopSong(); if (this.mq) this.mq.removeEventListener("change", this.onMq); clearInterval(this.timer); this.lock(false); }
   tick() {
     const target = new Date("2026-12-12T18:45:00-03:00").getTime();
     let diff = Math.max(0, target - Date.now());
@@ -487,6 +522,7 @@ class Component extends DCLogic {
   submit = async (modo) => {
     const err = this.validate();
     if (err) { this.setState({ error: err }); return; }
+    this.unlockSong();
     const s = this.state, yes = s.attend === "si", upd = modo === "actualizar";
     const payload = {
       enviado: new Date().toISOString(), asiste: yes ? "Sí" : "No",
@@ -513,7 +549,7 @@ class Component extends DCLogic {
       }
       if (res && res.estado === "duplicado") { this.setState({ sending: false, dups: res.repetidos }); return; }
       if (res && res.ok === false) throw new Error(res.mensaje || "error");
-      this.setState({ sent: true, sending: false, dups: null, updated: upd });
+      await this.readySeal(); this.setState({ sent: true, sending: false, dups: null, updated: upd, sealReady: true }); this.playSong(); if (!this.song) this.startPetals();
     } catch (e) { this.setState({ sending: false, error: "No pudimos enviar la confirmación. Probá de nuevo." }); }
   };
   ics = () => {
@@ -556,8 +592,8 @@ class Component extends DCLogic {
       barOp: s.sent ? 0 : 1, stepCount: this.stepState().length,
       stepCaption: (() => { const ss = this.stepState(); let c = ss.findIndex(x => !x[1]); if (c < 0) c = ss.length - 1; return "Paso " + (c + 1) + " de " + ss.length + " · " + ss[c][0]; })(),
       steps: (() => { const ss = this.stepState(); const cur = ss.findIndex(x => !x[1]); return ss.map(([label, done], i) => ({ label: (i + 1) + " · " + label, bar: done ? "#7a1f33" : (i === cur ? "rgba(122,31,51,.4)" : "rgba(69,86,58,.2)"), fg: done || i === cur ? "#7a1f33" : "#6b7462" })); })(),
-      openRsvp: () => this.modal("rsvpOpen", true), closeRsvp: () => this.modal("rsvpOpen", false),
-      notSent: !s.sent, sent: s.sent, isYes: s.attend === "si", isNo: s.attend === "no", hasAnswer: !!s.attend,
+      openRsvp: () => { if (!this.song) { try { this.song = new Audio("assets/celebration.mp3"); this.song.preload = "auto"; this.song.playsInline = true; } catch (e) {} } if (this.state.sent) { this.petalRun = (this.petalRun || 0) + 1; this._petals = null; this.unlockSong(); this.playSong(); } this.modal("rsvpOpen", true); }, closeRsvp: () => { this.stopSong(); this.modal("rsvpOpen", false); }, toggleSong: this.toggleSong, songLabel: s.songOn ? "Pausar música" : "Reproducir música", songIcon: s.songOn ? "❚❚" : "♪",
+      notSent: !s.sent, sent: s.sent, thanksOp: s.sealReady ? 1 : 0, petals: s.sent && s.rsvpOpen && s.petalsOn ? this.petalLayer() : null, isYes: s.attend === "si", isNo: s.attend === "no", hasAnswer: !!s.attend,
       attendOpts: [["si", "¡Sí, ahí estaremos!"], ["no", "Lamentablemente no podremos asistir"]].map(([v, label]) => Object.assign({ label, onClick: () => this.setState({ attend: v, error: "" }) }, (!s.attend || s.attend === v) ? { pressed: s.attend === v ? "true" : "false", bd: "#5c1322", bg: s.attend === v ? "#5c1322" : "#7a1f33", fg: "#fbfaf5", sh: "0 6px 14px rgba(70,25,35,.24)" } : { pressed: "false", bd: "#7a1f33", bg: "#fbfaf6", fg: "#7a1f33", sh: "none" }, s.attend === v ? { label: "✓ " + label } : {})),
       originOpts: ["Rosario", "Buenos Aires", "Otra ciudad"].map(label => Object.assign({ label, onClick: () => this.setState({ origin: label, error: "" }) }, this.chip(s.origin === label))),
       showOtherCity: s.origin === "Otra ciudad", otherCity: s.otherCity, onOtherCity: e => this.setState({ otherCity: e.target.value, error: "" }),
@@ -581,8 +617,8 @@ class Component extends DCLogic {
       dupList: (s.dups || []).map(r => ({ label: (r.nombre ? r.nombre + " · " : "") + r.email })),
       updateLabel: s.sending ? "enviando…" : "reemplazar mi respuesta",
       submitLabel: s.sending ? "enviando…" : "enviar confirmación",
-      thanksTitle: s.attend === "no" ? "¡Muchas gracias!" : "¡Gracias!!!",
-      thanksText: s.attend === "si" && !s.updated ? "Nos pone muy felices que vamos a vernos pronto." : s.updated ? "Actualizamos tu respuesta. ¡Gracias!" : s.attend === "no" ? "Gracias por avisarnos. Los vamos a extrañar mucho." : "Su respuesta nos ayuda a preparar cada detalle para celebrar juntos."
+      thanksTitle: s.attend === "no" ? "¡Muchas gracias!" : "¡¡¡Gracias!!!",
+      thanksText: s.attend === "si" && !s.updated ? "¡¡Nos pone muy felices que vamos a vernos pronto!! " : s.updated ? "Actualizamos tu respuesta. ¡Gracias!" : s.attend === "no" ? "Gracias por avisarnos. Los vamos a extrañar mucho." : "Su respuesta nos ayuda a preparar cada detalle para celebrar juntos."
     };
   }
 }
