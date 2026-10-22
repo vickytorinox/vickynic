@@ -8,7 +8,7 @@
 <meta property="og:image" content="https://vicynic.com/assets/og4.jpg">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../support.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Parisienne&amp;display=swap" rel="stylesheet">
-<script src="./image-slot.js"></script>
+<script src="/regalos/image-slot.js"></script>
 <style>
 html,body{margin:0;padding:0}
 body{background:#f8f5ee;font-family:"Cormorant Garamond",Georgia,serif;color:#45563a;-webkit-font-smoothing:antialiased}
@@ -26,10 +26,10 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
 </style>
 </helmet>
 <div style="position:relative;min-height:100vh;background:#f8f5ee;overflow-x:clip">
-<div style="position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:0;pointer-events:none;background:url(../assets/floral-abejas.webp) center/cover no-repeat;transform:translateZ(0);will-change:transform"></div>
+<div style="position:fixed;top:0;left:0;width:100%;height:100vh;height:100lvh;z-index:0;pointer-events:none;background:url(/assets/floral-abejas.webp) center/cover no-repeat;transform:translateZ(0);will-change:transform"></div>
 <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;padding:32px 16px 130px;box-sizing:border-box;container-type:inline-size">
 
-  <header style="position:relative;overflow:hidden;background:url(../assets/fondo-regalos-pareja.png) right -3.8cqw top/auto 150% no-repeat #f6f4ef;aspect-ratio:528/216;box-sizing:border-box;border:1px solid rgba(69,86,58,.3);outline:1px solid rgba(69,86,58,.18);outline-offset:-6px;padding:4.9cqw 47% 4.5cqw 6%;text-align:center;box-shadow:0 3px 10px rgba(45,58,38,.07)">
+  <header style="position:relative;overflow:hidden;background:url(/assets/fondo-regalos-pareja.png) right -3.8cqw top/auto 150% no-repeat #f6f4ef;aspect-ratio:528/216;box-sizing:border-box;border:1px solid rgba(69,86,58,.3);outline:1px solid rgba(69,86,58,.18);outline-offset:-6px;padding:4.9cqw 47% 4.5cqw 6%;text-align:center;box-shadow:0 3px 10px rgba(45,58,38,.07)">
     <h1 style="position:relative;margin:0;font:700 4.17cqw/1.2 'Cormorant Garamond',serif;letter-spacing:.22em;padding-left:.1em;white-space:nowrap;text-transform:uppercase;color:#2c3127">lista de regalos</h1>
     <div style="position:relative;font:400 8.33cqw/1.1 'Parisienne',cursive;color:#7a1f33;margin-top:1.5cqw;white-space:nowrap">Vicky &amp; Nico</div>
     <p style="position:relative;margin:1.9cqw auto 0;max-width:49cqw;font:500 max(11px,3.22cqw)/1.4 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Estamos armando nuestra casa,<br>¡Elegí lo que quieras y sumalo al carrito!</p>
@@ -51,7 +51,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px">
       <div data-gift="sabanas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.sabanas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-sabanas" src="fotos/sabanas.png" shape="rect" placeholder="Juego de sábanas"></image-slot>
+          <image-slot id="regalo-sabanas" src="/regalos/fotos/sabanas.png" shape="rect" placeholder="Juego de sábanas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Juego de sábanas</div>
@@ -71,7 +71,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="toallas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.toallas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-toallas" src="fotos/toallas.png" shape="rect" placeholder="Set de toallas"></image-slot>
+          <image-slot id="regalo-toallas" src="/regalos/fotos/toallas.png" shape="rect" placeholder="Set de toallas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Set de toallas</div>
@@ -91,7 +91,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="copas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.copas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-copas" src="fotos/copas.png" shape="rect" placeholder="Copas de vino"></image-slot>
+          <image-slot id="regalo-copas" src="/regalos/fotos/copas.png" shape="rect" placeholder="Copas de vino"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Copas de vino</div>
@@ -111,7 +111,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="vajilla" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.vajilla.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-vajilla" src="fotos/vajilla.png" shape="rect" placeholder="Vajilla"></image-slot>
+          <image-slot id="regalo-vajilla" src="/regalos/fotos/vajilla.png" shape="rect" placeholder="Vajilla"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Vajilla</div>
@@ -131,7 +131,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="ollas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.ollas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-ollas" src="fotos/ollas.png" shape="rect" placeholder="Set de ollas"></image-slot>
+          <image-slot id="regalo-ollas" src="/regalos/fotos/ollas.png" shape="rect" placeholder="Set de ollas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Set de ollas</div>
@@ -151,7 +151,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="cafetera" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.cafetera.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-cafetera" src="fotos/cafetera.png" shape="rect" placeholder="Cafetera"></image-slot>
+          <image-slot id="regalo-cafetera" src="/regalos/fotos/cafetera.png" shape="rect" placeholder="Cafetera"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Cafetera</div>
@@ -171,7 +171,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="lampara" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.lampara.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-lampara" src="fotos/lampara.png" shape="rect" placeholder="Lámpara de pie"></image-slot>
+          <image-slot id="regalo-lampara" src="/regalos/fotos/lampara.png" shape="rect" placeholder="Lámpara de pie"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Lámpara de pie</div>
@@ -191,7 +191,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="alfombra" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.alfombra.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-alfombra" src="fotos/alfombra.png" shape="rect" placeholder="Alfombra"></image-slot>
+          <image-slot id="regalo-alfombra" src="/regalos/fotos/alfombra.png" shape="rect" placeholder="Alfombra"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Alfombra</div>
@@ -211,7 +211,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="manta" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.manta.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-manta" src="fotos/manta.png" shape="rect" placeholder="Manta tejida"></image-slot>
+          <image-slot id="regalo-manta" src="/regalos/fotos/manta.png" shape="rect" placeholder="Manta tejida"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Manta tejida</div>
@@ -231,7 +231,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="plantas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.plantas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-plantas" src="fotos/plantas.png" shape="rect" placeholder="Plantas y macetas"></image-slot>
+          <image-slot id="regalo-plantas" src="/regalos/fotos/plantas.png" shape="rect" placeholder="Plantas y macetas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Plantas y macetas</div>
@@ -251,7 +251,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="cuadro" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.cuadro.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-cuadro" src="fotos/cuadro.png" shape="rect" placeholder="Cuadro"></image-slot>
+          <image-slot id="regalo-cuadro" src="/regalos/fotos/cuadro.png" shape="rect" placeholder="Cuadro"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Cuadro</div>
@@ -271,7 +271,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="batidora" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.batidora.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-batidora" src="fotos/batidora.png" shape="rect" placeholder="Batidora"></image-slot>
+          <image-slot id="regalo-batidora" src="/regalos/fotos/batidora.png" shape="rect" placeholder="Batidora"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Batidora</div>
@@ -291,7 +291,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="lavarropas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.lavarropas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-lavarropas" src="fotos/lavarropas.webp" shape="rect" placeholder="Lavarropas"></image-slot>
+          <image-slot id="regalo-lavarropas" src="/regalos/fotos/lavarropas.webp" shape="rect" placeholder="Lavarropas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Lavarropas</div>
@@ -311,7 +311,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="tv" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.tv.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-tv" src="fotos/tv.webp" shape="rect" placeholder="Smart TV"></image-slot>
+          <image-slot id="regalo-tv" src="/regalos/fotos/tv.webp" shape="rect" placeholder="Smart TV"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Smart TV</div>
@@ -331,7 +331,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="sommier" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.sommier.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-sommier" src="fotos/sommier.webp" shape="rect" placeholder="Colchón y sommier"></image-slot>
+          <image-slot id="regalo-sommier" src="/regalos/fotos/sommier.webp" shape="rect" placeholder="Colchón y sommier"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Colchón y sommier</div>
@@ -351,7 +351,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="pasajes" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.pasajes.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-pasajes" src="fotos/pasajes.webp" shape="rect" placeholder="Pasajes luna de miel"></image-slot>
+          <image-slot id="regalo-pasajes" src="/regalos/fotos/pasajes.webp" shape="rect" placeholder="Pasajes luna de miel"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Sillón</div>
@@ -371,7 +371,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="microondas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.microondas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-microondas" src="fotos/microondas.webp" shape="rect" placeholder="Microondas"></image-slot>
+          <image-slot id="regalo-microondas" src="/regalos/fotos/microondas.webp" shape="rect" placeholder="Microondas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Microondas</div>
@@ -391,7 +391,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="aspiradora" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.aspiradora.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-aspiradora" src="fotos/aspiradora.webp" shape="rect" placeholder="Aspiradora"></image-slot>
+          <image-slot id="regalo-aspiradora" src="/regalos/fotos/aspiradora.webp" shape="rect" placeholder="Aspiradora"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Aspiradora</div>
@@ -411,7 +411,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="mesa" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.mesa.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-mesa" src="fotos/mesa.png" shape="rect" placeholder="Mesa de comedor"></image-slot>
+          <image-slot id="regalo-mesa" src="/regalos/fotos/mesa.png" shape="rect" placeholder="Mesa de comedor"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Mesa de comedor</div>
@@ -431,7 +431,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="licuadora" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.licuadora.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-licuadora" src="fotos/licuadora.webp" shape="rect" placeholder="Licuadora"></image-slot>
+          <image-slot id="regalo-licuadora" src="/regalos/fotos/licuadora.webp" shape="rect" placeholder="Licuadora"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Licuadora</div>
@@ -451,7 +451,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="espejo" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.espejo.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-espejo" src="fotos/espejo.jpg" shape="rect" placeholder="Espejo"></image-slot>
+          <image-slot id="regalo-espejo" src="/regalos/fotos/espejo.jpg" shape="rect" placeholder="Espejo"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Espejo</div>
@@ -471,7 +471,7 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       </div>
       <div data-gift="sillas" style="display:flex;flex-direction:column;background:#fbfaf6;b;box-shadow:0 3px 10px rgba(45,58,38,.06);min-width:0;order:{{ g.sillas.ord }}">
         <div style="position:relative;aspect-ratio:1/1;background:#efeadf;border-bottom:1px solid rgba(69,86,58,.18)">
-          <image-slot id="regalo-sillas" src="fotos/sillas.webp" shape="rect" placeholder="Sillas"></image-slot>
+          <image-slot id="regalo-sillas" src="/regalos/fotos/sillas.webp" shape="rect" placeholder="Sillas"></image-slot>
         </div>
         <div style="display:flex;flex-direction:column;gap:4px;padding:12px 10px 12px;flex:1;text-align:center">
           <div data-role="name" style="font:700 16px/1.2 'Cormorant Garamond',serif;color:#2c3127;text-wrap:balance">Juego de Sillas</div>
@@ -655,7 +655,7 @@ class Component extends DCLogic {
   go(view) { this.setState({ view, error: "" }); window.scrollTo({ top: 0, behavior: "smooth" }); }
   renderVals() {
     const s = this.state;
-    const lines = ITEMS.filter(i => s.cart[i.id]).map(i => ({ ...i, ...(s.meta[i.id] || {}) })).map(i => { const q = s.cart[i.id]; return { img: "fotos/" + ({"alfombra":"alfombra.png","aspiradora":"aspiradora.webp","batidora":"batidora.png","cafetera":"cafetera.png","copas":"copas.png","cuadro":"cuadro.png","espejo":"espejo.jpg","lampara":"lampara.png","lavarropas":"lavarropas.webp","licuadora":"licuadora.webp","manta":"manta.png","mesa":"mesa.png","microondas":"microondas.webp","ollas":"ollas.png","pasajes":"pasajes.webp","plantas":"plantas.png","sabanas":"sabanas.png","sillas":"sillas.webp","sommier":"sommier.webp","toallas":"toallas.png","tv":"tv.webp","vajilla":"vajilla.png"})[i.id], hasImg: true, get thumbBg() { return "#f1ece2 url(\"" + this.img + "\") center/cover no-repeat"; }, name: i.name, label: (q > 1 ? q + " × " : "") + i.name, showQty: q > 1, qtyLabel: q + " × " + fmt(i.price), sub: fmt(i.price * q), amt: i.price * q, remove: () => this.removeLine(st => { const c = { ...st.cart }; delete c[i.id]; return { cart: c }; }) }; })
+    const lines = ITEMS.filter(i => s.cart[i.id]).map(i => ({ ...i, ...(s.meta[i.id] || {}) })).map(i => { const q = s.cart[i.id]; return { img: "/regalos/fotos/" + ({"alfombra":"alfombra.png","aspiradora":"aspiradora.webp","batidora":"batidora.png","cafetera":"cafetera.png","copas":"copas.png","cuadro":"cuadro.png","espejo":"espejo.jpg","lampara":"lampara.png","lavarropas":"lavarropas.webp","licuadora":"licuadora.webp","manta":"manta.png","mesa":"mesa.png","microondas":"microondas.webp","ollas":"ollas.png","pasajes":"pasajes.webp","plantas":"plantas.png","sabanas":"sabanas.png","sillas":"sillas.webp","sommier":"sommier.webp","toallas":"toallas.png","tv":"tv.webp","vajilla":"vajilla.png"})[i.id], hasImg: true, get thumbBg() { return "#f1ece2 url(\"" + this.img + "\") center/cover no-repeat"; }, name: i.name, label: (q > 1 ? q + " × " : "") + i.name, showQty: q > 1, qtyLabel: q + " × " + fmt(i.price), sub: fmt(i.price * q), amt: i.price * q, remove: () => this.removeLine(st => { const c = { ...st.cart }; delete c[i.id]; return { cart: c }; }) }; })
       .concat(s.free.map((fr, k) => ({ img: "", hasImg: false, name: "Aporte libre" + (fr.cur === "USD" ? " en dólares" : ""), label: "Aporte libre", showQty: false, qtyLabel: "", sub: money(fr.amt, fr.cur), amt: fr.amt, cur: fr.cur, remove: () => this.removeLine(st => ({ free: st.free.filter((_, j) => j !== k) })) })));
     const sum = c => lines.filter(l => (l.cur || "ARS") === c).reduce((t, l) => t + l.amt, 0);
     const total = sum("ARS"), totalUSD = sum("USD");
