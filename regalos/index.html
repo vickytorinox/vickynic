@@ -537,10 +537,10 @@ input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
       <sc-if value="{{ bk.showTitle }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;font:italic 700 16px/1.2 'Cormorant Garamond',serif;color:#7a1f33;text-align:center">{{ bk.title }}</div></sc-if>
       <div style="display:flex;flex-direction:column;margin-top:10px;border:1px solid rgba(69,86,58,.25);background:#fff">
         <sc-for list="{{ bk.rows }}" as="r" hint-placeholder-count="6">
-          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid rgba(69,86,58,.14);min-height:44px;box-sizing:border-box">
-            <div style="width:62px;flex:none;font:600 13px 'Cormorant Garamond',serif;letter-spacing:.08em;text-transform:uppercase;color:#45563a">{{ r.label }}</div>
-            <div style="flex:1;min-width:0;font:600 16px/1.25 'Cormorant Garamond',serif;color:#2c3127;overflow-wrap:anywhere">{{ r.value }}</div>
-            <sc-if value="{{ r.copyable }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ r.onCopy }}" style="flex:none;min-height:32px;padding:0 10px;border:1px solid #7a1f33;background:{{ r.cbg }};color:{{ r.cfg }};cursor:pointer;font:700 11px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase">{{ r.copyLabel }}</button></sc-if>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(69,86,58,.14);min-height:52px;box-sizing:border-box">
+            <div style="width:76px;flex:none;font:700 15px 'Cormorant Garamond',serif;letter-spacing:.08em;text-transform:uppercase;color:#45563a">{{ r.label }}</div>
+            <div style="flex:1;min-width:0;font:600 19px/1.25 'Cormorant Garamond',serif;color:#2c3127;overflow-wrap:anywhere">{{ r.value }}</div>
+            <sc-if value="{{ r.copyable }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ r.onCopy }}" style="flex:none;min-height:38px;padding:0 12px;border:1px solid #7a1f33;background:{{ r.cbg }};color:{{ r.cfg }};cursor:pointer;font:700 13px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase">{{ r.copyLabel }}</button></sc-if>
           </div>
         </sc-for>
       </div>
@@ -678,7 +678,7 @@ class Component extends DCLogic {
       countLabel: count === 1 ? "1 regalo" : count + " regalos",
       totalFmt: totalsArr.map(t => t.value).join(" + "), cartLines: lines,
       goCheckout: () => this.go("checkout"), backToStore: () => this.go("store"),
-      bankBlocks: totalsArr.map(t => { const acc = t.cur === "USD" ? { alias: "vicynicusd", cbu: "0070751231004004552781" } : { alias: "vicynic", cbu: "0070751230004005498449" }, p = t.cur; return { title: t.cur === "USD" ? "Cuenta en dólares" : "Cuenta en pesos", showTitle: totalsArr.length > 1 || t.cur === "USD", rows: [row("Alias", acc.alias, p + "alias"), row("CBU", acc.cbu, p + "cbu"), row("Titular", "Victoria Magali Alberto"), row("CUIL", "27-42129092-5"), row("Banco", "Galicia"), row("Monto", t.value, p + "monto")] }; }),
+      bankBlocks: totalsArr.map(t => { const acc = t.cur === "USD" ? { alias: "vicynicusd", cbu: "0070751231004004552781" } : { alias: "vicynic", cbu: "0070751230004005498449" }, p = t.cur; return { title: t.cur === "USD" ? "Cuenta en dólares" : "Cuenta en pesos", showTitle: totalsArr.length > 1 || t.cur === "USD", rows: [row("Alias", acc.alias, p + "alias"), row("CBU", acc.cbu, p + "cbu"), row("Titular", "Alberto Victoria Magali y/o Maschwitz Nicolas"), row("CUIL", "27-42129092-5"), row("Banco", "Galicia"), row("Monto", t.value, p + "monto")] }; }),
       name: s.name, onName: e => this.setState({ name: e.target.value, error: "" }),
       message: s.message, onMessage: e => this.setState({ message: e.target.value }),
       onFile: e => { const f = e.target.files && e.target.files[0]; this.setState({ file: f || null, error: "" }); },
