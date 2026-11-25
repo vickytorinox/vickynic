@@ -72,7 +72,7 @@ a:hover{color:#2c3127}
         <div style="display:contents">
           <div style="height:96px;display:flex;align-items:flex-end"><img src="assets/v-iglesia.webp" alt="" style="height:96px;width:auto"></div>
           <div style="font:700 14px/1.4 'Cormorant Garamond',serif;letter-spacing:.16em;padding-left:.16em;text-transform:uppercase;color:#2c3127;margin-top:16px;text-align:center;align-self:center">MISA DE ESPONSALES</div>
-          <div style="font:300 clamp(30px,8vw,38px)/1.1 'Cormorant Garamond',serif;color:#33402b;margin-top:8px;text-align:center;font-variant-numeric:lining-nums">17:45</div>
+          <div style="font:300 clamp(30px,8vw,38px)/1.1 'Cormorant Garamond',serif;color:#33402b;margin-top:8px;text-align:center;font-variant-numeric:lining-nums">17:30</div>
           <div style="font: 500 clamp(18px,4.8vw,20px)/1.35 'Cormorant Garamond',serif; color: #2c3127; margin: 6px 0 20px; text-wrap: balance; font-weight: 700">Parroq. Santa Rosa de Lima</div>
           <div style="align-self:end"><a href="https://www.google.com/maps/search/?api=1&amp;query=Parroquia+Santa+Rosa+de+Lima+Rosario" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:50px;box-sizing:border-box;padding:0 clamp(12px,4vw,22px);border:1px solid #5c1322;border-radius:1px;background:#7a1f33;box-shadow:0 6px 14px rgba(70,25,35,.24);cursor:pointer;font:700 14px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:#fbfaf5;white-space:nowrap;transition:background .3s ease,color .3s ease" style-hover="background:#5c1322;color:#fbfaf5">ver mapa</a></div>
         </div>
@@ -450,7 +450,7 @@ class Component extends DCLogic {
     this.loadWx(); this.lock(true); this.tick(); this.timer = setInterval(() => this.tick(), 1000); }
   componentWillUnmount() { this.stopSong(); if (this.mq) this.mq.removeEventListener("change", this.onMq); clearInterval(this.timer); this.lock(false); }
   tick() {
-    const target = new Date("2026-12-12T17:45:00-03:00").getTime();
+    const target = new Date("2026-12-12T17:30:00-03:00").getTime();
     let diff = Math.max(0, target - Date.now());
     const pad = n => String(n).padStart(2, "0"), day = 86400000;
     const d = Math.floor(diff / day); diff -= d * day;
@@ -554,8 +554,8 @@ class Component extends DCLogic {
   };
   ics = () => {
     const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Vicky y Nico//ES", "BEGIN:VEVENT", "UID:vickynico-20261212@boda",
-      "DTSTAMP:20260922T120000Z", "DTSTART:20261212T204500Z", "DTEND:20261213T060000Z", "SUMMARY:Casamiento de Vicky y Nico",
-      "DESCRIPTION:Misa de esponsales 17:45 hs - Parroquia Santa Rosa de Lima. Recepción 19:30 hs - Salones Puerto Norte.",
+      "DTSTAMP:20260922T120000Z", "DTSTART:20261212T203000Z", "DTEND:20261213T060000Z", "SUMMARY:Casamiento de Vicky y Nico",
+      "DESCRIPTION:Misa de esponsales 17:30 hs - Parroquia Santa Rosa de Lima. Recepción 19:30 hs - Salones Puerto Norte.",
       "LOCATION:Parroquia Santa Rosa de Lima\\, Rosario", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
     const url = URL.createObjectURL(new Blob([lines], { type: "text/calendar;charset=utf-8" }));
     const a = document.createElement("a"); a.href = url; a.download = "vicky-y-nico-12-12-2026.ics";
